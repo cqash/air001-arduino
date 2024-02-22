@@ -43,8 +43,8 @@ void loop() {
   digitalWrite(PB_0, LOW);
   delay(500);
   if(state==1) {
-    HAL_SuspendTick(); 
-    HAL_Init;
+    HAL_SuspendTick();   /* systick中断关闭，防止systick中断唤醒 */
+    //HAL_Init;  
      /* 进入SLEEP模式 */
   HAL_PWR_EnterSLEEPMode(PWR_SLEEPENTRY_WFE);  
   //HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFE);
