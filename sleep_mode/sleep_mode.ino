@@ -47,7 +47,7 @@ void loop() {
     //HAL_Init;  
      /* 进入SLEEP模式 */
   HAL_PWR_EnterSLEEPMode(PWR_SLEEPENTRY_WFE);  
-  //HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFE);
+  //HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFE);  /* 停止模式，目前无法唤醒，需要断电才能恢复 */
     }
 }
 
