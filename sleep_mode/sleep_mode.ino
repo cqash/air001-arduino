@@ -1,5 +1,5 @@
   #define Button PB_6
- static uint8_t state=0;
+ static uint8_t state=0;/* 进入待机模式的标志 */
 void onChange() {
  
     if (digitalRead(Button) == LOW)
@@ -77,16 +77,11 @@ void loop() {
   digitalWrite(PB_0, LOW);
   delay(500);
   if(state==1) {
-    HAL_SuspendTick(); 
-    HAL_Init;
+    HAL_SuspendTick();   /* systick中断关闭，防止systick中断唤醒 */
+    //HAL_Init;  
      /* 进入SLEEP模式 */
   HAL_PWR_EnterSLEEPMode(PWR_SLEEPENTRY_WFE);  
-  //HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFE);
+  //HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFE);  /* 停止模式，目前无法唤醒，需要断电才能恢复 */
     }
-      
-
-  
- 
-
 }
 
